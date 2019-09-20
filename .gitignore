@@ -1,0 +1,15 @@
+bin
+
+.vs
+
+obj
+
+.mdf
+
+.ldf
+
+packages
+
+#NuGet
+packages
+!packages/repositories.config
