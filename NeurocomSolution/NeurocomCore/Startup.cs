@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using NeurocomCore.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace NeurocomCore
 {
@@ -25,6 +27,8 @@ namespace NeurocomCore
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			string connection = Configuration.GetConnectionString("DefaultConnection");
+			services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 		}
 
